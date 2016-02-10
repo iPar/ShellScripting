@@ -1,0 +1,2 @@
+# This is an empty file in the test/ directory which
+# is simply used as input for the #s 06-08 scripts.
