@@ -1,1 +1,2 @@
-tester...
+# This is an empty regular ile used to test some
+# of the scripts in this folder.
