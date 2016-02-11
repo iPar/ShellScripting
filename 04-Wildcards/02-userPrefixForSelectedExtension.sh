@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # This script renames files based on their extension. User is prompted for
-# a file extension, then prompted whether they with to prepend today's date
+# a file extension, then prompted whether they wish to prepend today's date
 # by pressing [Enter] or using their own entered prefix. The script outputs
 # the original file name and its new name for each file being renamed.
 
