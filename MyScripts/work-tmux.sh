@@ -7,10 +7,18 @@
 # 'work-tmux' session - either the one just now created or
 # the one that was already in existence.
 
-tmux new -d -s work-tmux                                    # Attempts to create new session and detach from it.
+if [ -z "$1" ]                                              # This 'if' statement test to see if argument for 'name' was provided
+then                                                        # at the command-line.
+  echo -e "\n\nNo argument supplied.  Please try again using following format:\n"
+  echo -e "    work-tmux.sh [name]'\n"
+  echo -e "Where [name] is the name of the tmux session you wish to create.\n\n"
+  exit 0                                                    # If not, it exits before attempting to create a new tmux session.
+fi
+
+tmux new -d -s $1                                           # Attempts to create new session and detach from it.
 EXISTS=$?                                                   # Stores return value in 'EXISTS' variable
 
-if [ $EXISTS = '1' ]                                        # Tests stored return value to determine session alread exists.
+if [ $EXISTS = '1' ]                                        # Tests stored return value to determine if session already exists.
 then
   echo 'This tmux sesssion already exists.'
   sleep 1s
@@ -25,6 +33,6 @@ else                                                        # Enters 'else' stat
   tmux rename-window comm
   tmux select-window -t 1                                   # Selects window #1.
 fi
-  tmux attach -t work-tmux                                  # Attaches to session named 'work-tmux', whether it was just now
+  tmux attach -t $1                                         # Attaches to session named 'work-tmux', whether it was just now
                                                             # created or was already in existence when this script started.
 
